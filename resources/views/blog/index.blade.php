@@ -23,24 +23,24 @@
       </div>
       <section class="cards-blog latest-blog">
         <div class="card-blog-content">
-          <img src="images/1.jpg" alt="" />
+          <img src="{{asset('images/1.jpg')}}" alt="" />
           <p>
             2 hours ago
             <span>Written By UiMonk </span>
           </p>
           <h4>
-            <a href="single-blog.html">Mumbai Hits 32Deg summer</a>
+            <a href="{{route('blog.show')}}">Mumbai Hits 32Deg summer</a>
           </h4>
         </div>
 
         <div class="card-blog-content">
-          <img src="images/2.jpg" alt="" />
+          <img src="{{asset('images/2.jpg')}}" alt="" />
           <p>
             23 hours ago
             <span>Written By UiMonk </span>
           </p>
           <h4 style="font-weight: bolder">
-            <a href="single-blog.html">India KicksOff IPL 16</a>
+            <a href="{{route('blog.show')}}">India KicksOff IPL 16</a>
           </h4>
         </div>
 

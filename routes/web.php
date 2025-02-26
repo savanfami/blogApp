@@ -9,3 +9,7 @@ Route::get('/about',[App\Http\Controllers\Customcontroller::class,'about'])->nam
 Route::get('/blog',[App\Http\Controllers\blogController::class,'index'])->name('blog.index');
 Route::get('/single-blog',[App\Http\Controllers\blogController::class,'show'])->name('blog.show');
 Route::get('/contact',[App\Http\Controllers\ContactController::class,'index'])->name('contact.index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

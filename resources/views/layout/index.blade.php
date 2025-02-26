@@ -9,6 +9,7 @@
   <!-- Css -->
   <link rel="stylesheet" href="style.css" />
   <!-- Font awesome -->
+  <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 
@@ -21,10 +22,15 @@
 
       <div class="side-links">
         <ul>
-          <li><a class="active" href="{{route('home.index')}}">Home</a></li>
-          <li><a href="{{route('blog.index')}}">Blog</a></li>
-          <li><a href="{{route('home.about')}}">About</a></li>
-          <li><a href="{{route('contact.index')}}">Contact</a></li>
+          <li><a class="{{ request()->routeIs('home.index') ? 'active' : '' }}"
+              href="{{ route('home.index') }}">Home</a></li>
+          <li><a class="{{ request()->routeIs('blog.index') ? 'active' : '' }}"
+              href="{{ route('blog.index') }}">Blog</a></li>
+          <li><a class="{{ request()->routeIs('home.about') ? 'active' : '' }}"
+              href="{{ route('home.about') }}">About</a></li>
+          <li><a class="{{ request()->routeIs('contact.index') ? 'active' : '' }}"
+              href="{{ route('contact.index') }}">Contact</a></li>
+
         </ul>
       </div>
       <!-- sidebar footer -->
@@ -45,7 +51,7 @@
       <div class="bar"></div>
     </div>
     <!-- main -->
-   
+
     @yield('main')
 
     <!-- Main footer -->
@@ -74,7 +80,7 @@
         document.querySelector(".sidebar").style.width = "0";
       });
 
-      // setTimeout(() => {alert('Welcome')}, 500);
+    // setTimeout(() => {alert('Welcome')}, 500);
   </script>
 </body>
 
