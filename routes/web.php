@@ -13,3 +13,4 @@ Route::get('/contact',[App\Http\Controllers\ContactController::class,'index'])->
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/create-blog',[ App\Http\Controllers\blogController::class,'create'])->name('blog.create');
