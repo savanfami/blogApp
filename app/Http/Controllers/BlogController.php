@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\str;  
+use App\Models\Post;
+
+
 
 class BlogController extends Controller
 {
@@ -11,7 +16,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-      return view('blog.index');
+        $allPost=Post::all();
+      return view('blog.index',['allPosts'=>$allPost]);
     }
 
     public function show()
@@ -38,7 +44,27 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string',  
+            'image' => 'required|image', 
+            'body' => 'required'    
+        ]);
+
+        $title=$request->input('title');
+        $body=$request->input('body');
+        $slug=str::slug($title,'-');
+        $userId=Auth::user()->id; 
+        $imagePath='storage/'.$request->file('image')->store('blog/post/images','public');
+        $post=new Post;
+        $post->title= $title;
+        $post->slug= $slug;
+        $post->user_id= $userId;
+        $post->image_path= $imagePath;
+        $post->body= $body;
+        $post->save();
+
+        return redirect()->back()->with('status','Post Saved Successfully');
+
     }
 
     /**

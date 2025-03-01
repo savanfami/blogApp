@@ -22,18 +22,19 @@
         </ul>
       </div>
       <section class="cards-blog latest-blog">
+        @foreach ($allPosts as $post )
+        
         <div class="card-blog-content">
-          <img src="{{asset('images/1.jpg')}}" alt="" />
+          <img src="{{ $post ->image_path}}" alt="" />
           <p>
-            2 hours ago
-            <span>Written By UiMonk </span>
+            {{ $post->created_at ->diffforHumans()}}
+            <span>Written By  {{ $post->user->name }} </span>
           </p>
           <h4>
-            <a href="{{route('blog.show')}}">Mumbai Hits 32Deg summer</a>
-          </h4>
+          <a href="{{ route('blog.show', $post) }}">{{ $post->title }}</a>          </h4>
         </div>
-
-        <div class="card-blog-content">
+@endforeach
+        <!-- <div class="card-blog-content">
           <img src="{{asset('images/2.jpg')}}" alt="" />
           <p>
             23 hours ago
@@ -42,7 +43,7 @@
           <h4 style="font-weight: bolder">
             <a href="{{route('blog.show')}}">India KicksOff IPL 16</a>
           </h4>
-        </div>
+        </div> -->
 
        
      

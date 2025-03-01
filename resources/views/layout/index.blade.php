@@ -23,23 +23,20 @@
 
       <div class="side-links">
         <ul>
+          @auth
+        <li><a class="{{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Dashboard</a></li>
+      @endauth
           <li><a class="{{ request()->routeIs('home.index') ? 'active' : '' }}"
               href="{{ route('home.index') }}">Home</a></li>
           <li><a class="{{ request()->routeIs('blog.index') ? 'active' : '' }}"
               href="{{ route('blog.index') }}">Blog</a></li>
           <li><a class="{{ request()->routeIs('home.about') ? 'active' : '' }}"
               href="{{ route('home.about') }}">About</a></li>
-          <li><a class="{{ request()->routeIs('contact.index') ? 'active' : '' }}"
-              href="{{ route('contact.index') }}">Contact</a></li>
           @guest
         <li><a class="{{ request()->routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}">Login</a></li>
         <li><a class="{{ request()->routeIs('register') ? 'active' : '' }}"
           href="{{ route('register') }}">Register</a></li>
-        @endguest
-@auth
-        <li><a class="{{ request()->routeIs('home') ? 'active' : '' }}"
-        href="{{ route('home') }}">Dashboard</a></li>
-        @endauth
+      @endguest
         </ul>
       </div>
       <!-- sidebar footer -->
