@@ -1,9 +1,10 @@
 @extends('layout.index')
 @section('main')
 
+
 <main class="container">
       <section class="single-blog-post">
-        <h1>Mumbai Hits 32Deg summer</h1>
+        <h1>Mumbai Hits 32Deg summ</h1>
 
         <p class="time-and-author">
           2 hours ago
@@ -57,4 +58,4 @@
       </section>
     </main>
 
-@endsection
+    @endsection

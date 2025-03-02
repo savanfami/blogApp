@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog App</title>
   <!-- Css -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <!-- Font awesome -->
-  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+  <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>

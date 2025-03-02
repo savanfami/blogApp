@@ -17,9 +17,10 @@ Route::controller(Customcontroller::class)->group(function () {
 
 Route::controller(BlogController::class)->group(function () {
     Route::get('/blog', 'index')->name('blog.index');
-    Route::get('/blog/{post}', 'show')->name('blog.show');
+    Route::get('/blog/{post:slug}', 'show')->name('blog.show');
     Route::get('/create-blog', 'create')->name('blog.create');
     Route::post('/blog/store', 'store')->name('blog.store');
+
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

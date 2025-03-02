@@ -22,29 +22,24 @@
         </ul>
       </div>
       <section class="cards-blog latest-blog">
-        @foreach ($allPosts as $post )
-        
+      @if($allPosts->isEmpty())
+    <p>No blog posts available.</p>
+@else
+    @foreach ($allPosts as $post )
         <div class="card-blog-content">
-          <img src="{{ $post ->image_path}}" alt="" />
-          <p>
-            {{ $post->created_at ->diffforHumans()}}
-            <span>Written By  {{ $post->user->name }} </span>
-          </p>
-          <h4>
-          <a href="{{ route('blog.show', $post) }}">{{ $post->title }}</a>          </h4>
+            <img src="{{ asset($post->image_path) }}" alt="Post Image" />
+            <p>
+                {{ $post->created_at->diffForHumans() }}
+                <span>Written by {{ $post->user->name ?? 'Unknown' }}</span>
+            </p>
+            <h4>
+                <a href="{{ route('blog.show', $post) }}">{{ $post->title }}</a>
+            </h4>
         </div>
-@endforeach
-        <!-- <div class="card-blog-content">
-          <img src="{{asset('images/2.jpg')}}" alt="" />
-          <p>
-            23 hours ago
-            <span>Written By UiMonk </span>
-          </p>
-          <h4 style="font-weight: bolder">
-            <a href="{{route('blog.show')}}">India KicksOff IPL 16</a>
-          </h4>
-        </div> -->
+    @endforeach
+@endif
 
+   
        
      
 

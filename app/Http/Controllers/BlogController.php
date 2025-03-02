@@ -36,6 +36,10 @@ class BlogController extends Controller
 
     public function single()
     {
+        // return view('blog.single');
+    }
+    public function about()
+    {
         return view('blog.single');
     }
 
