@@ -6,26 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog App</title>
-  <!-- Css -->
   <link rel="stylesheet" href="/style.css" />
-  <!-- Font awesome -->
-  <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
   @yield('stylesheet')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
   <div id="wrapper">
-    <!-- sidebar -->
     <div class="sidebar">
       <span class="closeButton">&times;</span>
       <p class="brand-title"><a href="">Blog World </a></p>
-
       <div class="side-links">
         <ul>  
           @auth
         <li><a class="{{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Dashboard</a></li>
+        <li><a class="{{ request()->routeIs('blog.myblog') ? 'active' : '' }}" href="{{ route('blog.myblog') }}">My Blogs</a></li>
       @endauth
           <li><a class="{{ request()->routeIs('home.index') ? 'active' : '' }}"
               href="{{ route('home.index') }}">Home</a></li>
@@ -40,8 +38,6 @@
       @endguest
         </ul>
       </div>
-      <!-- sidebar footer -->
-
     </div>
     
 
@@ -51,7 +47,6 @@
 
   </div>
 
-  <!-- Click events to menu and close buttons using javaascript-->
   <script>
     document
       .querySelector(".menuButton")
@@ -66,7 +61,6 @@
         document.querySelector(".sidebar").style.width = "0";
       });
 
-    // setTimeout(() => {alert('Welcome')}, 500);
   </script>
 </body>
 

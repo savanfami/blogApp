@@ -14,9 +14,13 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $allPost = Post::latest()->get();
+        if($request->search){
+            $allPost = Post::where('title', 'LIKE', '%' . $request->search . '%')->latest()->paginate(1);
+        }else{
+            $allPost = Post::latest()->paginate(1);
+        }
         return view('blog.index', ['allPosts' => $allPost]);
     }
 
@@ -116,6 +120,12 @@ class BlogController extends Controller
 
         return redirect()->back()->with('status', 'Post Saved Successfully');
 
+    }
+
+
+    public function myblog(){
+        $allPost = Post::latest()->get();
+        return view('blog.myblog', ['allPosts' => $allPost]);
     }
 
     /**
