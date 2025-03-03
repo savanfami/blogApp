@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+
 
 class Customcontroller extends Controller
 {
@@ -11,7 +13,8 @@ class Customcontroller extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $allPosts=Post::latest()->take(2)->get();
+        return view('welcome',compact('allPosts'));
     }
 
     public function about()

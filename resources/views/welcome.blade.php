@@ -1,45 +1,36 @@
 @extends('layout.index')
 @section('main')
 
-<header class="header">
-        <div class="header-text">
-          <h1>UiMonk Blog</h1>
-          <h4>Home of verified news...</h4>
-        </div>
-        <div class="overlay"></div>
-      </header>
+  <header class="header">
+    <div class="header-text">
+    <h1>Blog World</h1>
+    </div>
+    <div class="overlay"></div>
+  </header>
 
-      <main class="container">
-        <h2 class="header-title">Latest Blog Posts</h2>
-        <section class="cards-blog latest-blog">
-          <div class="card-blog-content">
-            <img src="{{asset('images/1.jpg')}}" alt="" />
-            <p>
-              2 hours ago
-              <span style="float: right">Written By UiMonk </span>
-            </p>
-            <h4 style="font-weight: bolder">
-              <a href="single-blog.html"
-                >Benefits of Getting Covid 19 Vaccination</a
-              >
-            </h4>
-          </div>
+  <main class="container">
+    <h2 class="header-title">Latest Blog Posts</h2>
+    <section class="cards-blog latest-blog">
+  @foreach ($allPosts as $post)
+    <div class="card-blog-content">
+    <img src="{{ asset($post['image_path']) }}" alt="Post Image" />
+    <p>
+    {{ $post->created_at->diffForHumans() }}
+    <span>Written by {{ $post->user->name ?? 'Unknown' }}</span>
+    </p>
+    <h4>
+    <a href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+    </h4>
+    </div>
+  @endforeach
 
-          <div class="card-blog-content">
-            <img src="{{asset('images/2.jpg')}}" alt="" />
-            <p>
-              23 hours ago
-              <span style="float: right">Written By UiMonk </span>
-            </p>
-            <h4 style="font-weight: bolder">
-              <a href="single-blog.html">Top 10 Music Stories Never Told</a>
-            </h4>
-          </div>
 
-  
 
-     
-        </section>
-      </main>
+
+
+
+
+    </section>
+  </main>
 
 @endsection

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/style.css" />
   <!-- Font awesome -->
   <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+  @yield('stylesheet')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -22,7 +23,7 @@
       <p class="brand-title"><a href="">Blog World </a></p>
 
       <div class="side-links">
-        <ul>
+        <ul>  
           @auth
         <li><a class="{{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Dashboard</a></li>
       @endauth
@@ -42,13 +43,7 @@
       <!-- sidebar footer -->
 
     </div>
-    <!-- Menu Button -->
-    <div class="menuButton">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <!-- main -->
+    
 
     @yield('main')
 
