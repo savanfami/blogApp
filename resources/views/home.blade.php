@@ -37,8 +37,8 @@
         <div class="col-md-6 text-center">
             <div class="d-flex flex-column gap-3">
                 <a class="btn btn-primary" href="{{ route('blog.create') }}">Create Post</a>
-                <a class="btn btn-primary" href="#">Create Category</a>
-                <a class="btn btn-primary" href="#">List Categories</a>
+                <a class="btn btn-primary" href="{{ route('categories.create') }}">Create Category</a>
+                <a class="btn btn-primary" href="{{ route('categories.index') }}">List Categories</a>
             </div>
         </div>
     </div>

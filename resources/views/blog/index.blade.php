@@ -13,12 +13,14 @@
     </form>
     </div>
     <div class="categories">
+      @foreach ($allcategory as $cat )
     <ul>
-      <li><a href="">Health</a></li>
-      <li><a href="">Entertainment</a></li>
-      <li><a href="">Sports</a></li>
-      <li><a href="">Nature</a></li>
+      
+     
+      <li><a href="">{{ $cat->name }}</a></li>
+      
     </ul>
+    @endforeach
     </div>
     @if (Session('status'))
     <p style="background-color: red;color: white;padding: 1rem;">{{ Session('status') }}</p>

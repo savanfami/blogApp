@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\str;
 use App\Models\Post;
+use App\Models\categories;
 
 
 
@@ -21,7 +22,8 @@ class BlogController extends Controller
         }else{
             $allPost = Post::latest()->paginate(1);
         }
-        return view('blog.index', ['allPosts' => $allPost]);
+        $allcategory=categories::all();
+        return view('blog.index', ['allPosts' => $allPost,'allcategory'=>$allcategory]);
     }
 
     public function show($slug)

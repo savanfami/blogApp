@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\categories;
 
 class categoryController extends Controller
 {
@@ -11,6 +12,8 @@ class categoryController extends Controller
      */
     public function index()
     {
+       $allCategory= categories::all();
+        return view('categories.index',compact('allCategory'));
     }
 
     /**
@@ -27,7 +30,16 @@ class categoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $name = $request->input('name');
+        $category=new categories();
+        $category->name=$name;
+        $category->save();
+
+        return redirect()->back()->with('status', 'Category created Successfully');
     }
 
     /**
@@ -41,24 +53,37 @@ class categoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(categories $cat)
     {
-        //
+        $currentCatId=$cat->id;
+        $editCat=categories::where('id',$currentCatId)->first();
+        return view('categories.edit',compact('editCat'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, categories $cat)
     {
-        //
+       
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        $name = $request->input('name');
+        $cat->name=$name;
+        $cat->save();
+
+        return redirect()->back()->with('status', 'category updated Successfully');
+    
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(categories $cat)
     {
-        //
+        $cat->delete();
+        return redirect()->route('categories.index')->with('status', 'category deleted Successfully');
     }
 }

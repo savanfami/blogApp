@@ -1,36 +1,26 @@
 @extends('layout.index')
 
 @section('main')
-<div class="container" style="margin-top: 100px;">
+<div class="container col-md-6" style="margin-top: 100px;">
     <h2>Create Category</h2>
 
 @if (Session('status'))
  <p style="background-color: green;color: white;padding: 1rem;">{{ Session('status') }}</p>
 @endif
 
-    <form  method="POST" >
+<div class="card">
+    <div class="card-body">
+    <form action="{{ route('category.store') }}"  method="POST" >
         @csrf
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" name="name" class="form-control" value="{{ old('name') }}" >
             @error('title') <span class="text-danger">{{ $message }}</span> @enderror
-        </div>
-
-
-
-        <!-- <div class="form-group">
-            <label for="category">Select Category:</label>
-            <select name="category" class="form-control" >
-                <option value="">Choose Category</option>
-               
-            </select>
-        </div> -->
-
-        <!-- Body -->
-     
-
-  
-        <button type="submit" class="btn btn-primary">Create Post</button>
+        </div>  
+        <button type="submit" class="btn btn-primary mt-3">Create Category</button>
     </form>
+    <a href="{{ route('categories.index') }}" class=" mt-3 btn btn-primary" >all Category</a>
+    </div>
+</div>
 </div>
 @endsection

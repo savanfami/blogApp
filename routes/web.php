@@ -30,7 +30,11 @@ Route::controller(BlogController::class)->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::controller(categoryController::class)->group(function () {callback: 
-    // Route::get('/category', 'index')->name('category.index');
     Route::get('/category/create', 'create')->name('categories.create');
-  
+    Route::get('/category', 'index')->name('categories.index');
+    Route::post('/category/store', 'store')->name('category.store');
+    Route::get('/category/{cat}/edit','edit')->name('category.edit');
+    Route::put('/category/{cat}/update','update')->name('category.update');
+    Route::delete('/category/{cat}/delete','destroy')->name('category.delete');
+
 });
