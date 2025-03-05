@@ -19,7 +19,7 @@
     <span style="color: white;">Written by {{ $post->user->name ?? 'Unknown' }}</span>
     </p>
     <h4>
-    <a style="color: grey;" href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+    <a style="color: whitesmoke;" href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
     </h4>
     </div>
   @endforeach
