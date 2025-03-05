@@ -3,19 +3,19 @@
 
 @section('main')
 
-  <main class="container">
-    <div class="searchbar">
+  <main class="container " >
+    <div class="searchbar mt-5">
     <form action="">
-      <input type="text" placeholder="Search..." name="search" />
+      <input type="text" style="color: white;" placeholder="Search..." name="search" />
       <button type="submit">
-      <i class="fa fa-search"></i>
+      search
       </button>
     </form>
     </div>
     <div class="categories">
-      <ul>
-      @foreach ($allcategory as $cat )
-    <li><a href="{{ route('blog.index', ['category' => $cat->name]) }}">{{ $cat->name }}</a></li>
+    <ul>
+      @foreach ($allcategory as $cat)
+      <li><a href="{{ route('blog.index', ['category' => $cat->name]) }}">{{ $cat->name }}</a></li>
     @endforeach
     </ul>
     </div>
@@ -24,20 +24,20 @@
   @endif
     <section class="cards-blog latest-blog">
     @if($allPosts->isEmpty())
-    <p>No blog posts available.</p>
+    <p style="color: white;">No blog posts available.</p>
   @else
   @foreach ($allPosts as $post)
     <div class="card-blog-content">
     <img src="{{ asset($post->image_path) }}" alt="Post Image" />
     <p>
     {{ $post->created_at->diffForHumans() }}
-    <span>Written by {{ $post->user->name ?? 'Unknown' }}</span>
+    <span >Written by {{ $post->user->name ?? 'Unknown' }}</span>
     </p>
 
     <!-- Wrap title and buttons in a flex container -->
     <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
     <h4 style="margin: 0;">
-    <a href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+    <a class="a-class" href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
     </h4>
     @auth
     @if (auth()->check() && auth()->user()->id === $post->user->id)
@@ -59,7 +59,7 @@
 
   </main>
   <div style="margin:0 auto;width: 100%;display: flex;align-items: center;justify-content: center;">
-        {{ $allPosts->links('pagination::default') }}
-    </div>
+    {{ $allPosts->links('pagination::default') }}
+  </div>
 
 @endsection

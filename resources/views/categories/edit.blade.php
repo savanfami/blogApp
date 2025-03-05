@@ -2,7 +2,7 @@
 
 @section('main')
     <div class="container col-md-6" style="margin-top: 100px;">
-        <h2>Edit Category</h2>
+        <h2 style="color: white;">Edit Category</h2>
 
         @if (Session('status'))
             <p style="background-color: green;color: white;padding: 1rem;">{{ Session('status') }}</p>
@@ -14,7 +14,7 @@
                     @csrf
                     @method('put')
                     <div class="form-group">
-                        <label for="name">Name:</label>
+                        <label style="color: white;" for="name">Name:</label>
                         <input type="text" name="name" class="form-control" value="{{ $editCat->name }}">
                         @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>

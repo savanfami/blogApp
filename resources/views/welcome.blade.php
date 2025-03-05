@@ -3,7 +3,7 @@
 
   <header class="header">
     <div class="header-text">
-    <h1>Blog World</h1>
+    <h1 style="background: none;" >Blog World</h1>
     </div>
     <div class="overlay"></div>
   </header>
@@ -14,12 +14,12 @@
   @foreach ($allPosts as $post)
     <div class="card-blog-content">
     <img src="{{ asset($post['image_path']) }}" alt="Post Image" />
-    <p>
+    <p style="color: white;">
     {{ $post->created_at->diffForHumans() }}
-    <span>Written by {{ $post->user->name ?? 'Unknown' }}</span>
+    <span style="color: white;">Written by {{ $post->user->name ?? 'Unknown' }}</span>
     </p>
     <h4>
-    <a href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+    <a style="color: grey;" href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
     </h4>
     </div>
   @endforeach

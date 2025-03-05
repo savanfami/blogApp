@@ -4,6 +4,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
+  background-color: black;
+  
+
 }
 
 body {
@@ -14,6 +17,7 @@ body {
 #wrapper {
   margin-left: 300px;
   overflow-x: hidden;
+  /* background-color: black; */
 }
 
 a {
@@ -47,7 +51,7 @@ img {
 /* header */
 
 .header {
-  background-image: url("images/photography.jpg");
+  background-image: url("https://media.istockphoto.com/id/1312418309/photo/visual-contents-concept-social-networking-service-streaming-video-communication-network-3d.jpg?s=612x612&w=0&k=20&c=2wop2q3V2_nHCc4X7ISInzRA3Bp52UHAX0tTgKNWeBQ=");
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -55,6 +59,7 @@ img {
   align-items: center;
   justify-content: center;
   position: relative;
+
 }
 
 .header-text {
@@ -62,6 +67,9 @@ img {
   color: white;
   text-align: center;
   z-index: 1;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  background-color: transparent;
+  
 }
 
 .header-text h1 {
@@ -109,12 +117,14 @@ img {
 }
 
 .side-links .active {
-  color: white;
+  color: green;
+  font-weight: 800;
 }
 
 .side-links li a {
   display: inline-block;
   transition: ease 0.4s;
+  color: white;
 }
 
 .side-links li a:hover {
@@ -217,7 +227,9 @@ footer small {
   text-align: center;
   margin: 80px 0 40px 0;
   font-size: 30px;
-  font-weight: 300;
+  font-weight: 500;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 .cards-blog {
@@ -233,21 +245,36 @@ footer small {
   margin-top: 6px;
   font-size: 16px;
   font-weight: 300;
+  color: white;
+  
 }
 
 .card-blog-content p span {
   float: right;
+  color: white;
 }
 
 .card-blog-content h4 {
   font-size: 24px;
   font-weight: bolder; 
   text-transform: capitalize;
+  color: white;
 }
 
 .card-blog-content a {
   font-weight: 400;
 }
+
+.a-class{
+  color: grey;
+
+}
+
+.a-class:hover {
+  color: white; 
+  
+}
+
 
 /* Pagination */
 

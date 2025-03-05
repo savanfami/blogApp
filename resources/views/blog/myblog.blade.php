@@ -4,8 +4,9 @@
 @section('main')
 
     <main class="container">
-
-
+     <div style="display: flex;justify-content: center;margin-top: 20px;text-decoration: underline;">
+         <h1 style="color: white;text-decoration: underline;">My Blogs</h1>
+     </div>
         @if (Session('status'))
             <p style="background-color: red;color: white;padding: 1rem;">{{ Session('status') }}</p>
         @endif
@@ -15,7 +16,7 @@
             @else
                 @foreach ($allPosts as $post)
                     @if(auth()->check() && auth()->user()->id === $post->user->id)
-                        <div class="card-blog-content">
+                        <div class="card-blog-content" style="margin-top: 20px;">
                             <img src="{{ asset($post->image_path) }}" alt="Post Image" />
                             <p>
                                 {{ $post->created_at->diffForHumans() }}
@@ -25,7 +26,7 @@
                          
                             <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                                 <h4 style="margin: 0;">
-                                    <a href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                                    <a style="color: white;" href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
                                 </h4>
                                 @auth
                                     @if (auth()->check() && auth()->user()->id === $post->user->id)

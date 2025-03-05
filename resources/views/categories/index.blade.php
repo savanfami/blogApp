@@ -2,8 +2,6 @@
 
 @section('main')
 <div class="container col-md-8" style="margin-top: 100px;">
-    <h2 class="text-center mb-4">Create Category</h2>
-
     @if (Session('status'))
         <p class="alert alert-success">{{ Session('status') }}</p>
     @endif

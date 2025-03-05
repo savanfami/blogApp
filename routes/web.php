@@ -13,7 +13,6 @@ use App\Http\Controllers\HomeController;
 
 Route::controller(Customcontroller::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
-    Route::get('/about', 'about')->name('home.about');
 }); 
 
 Route::controller(BlogController::class)->group(function () {

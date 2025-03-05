@@ -4,11 +4,11 @@
 
   <main class="container">
     <section class="single-blog-post">
-    <h1>{{ $post->title }}</h1>
+    <h1 style="color: white;text-decoration: underline;">{{ $post->title }}</h1>
 
-    <p class="time-and-author">
+    <p style="color: white;" class="time-and-author">
       {{ $post->created_at->diffForHumans() }}
-      <span>Written By {{ $post->user->name ?? 'unknown'}}</span>
+      <span style="color: white;">Written By {{ $post->user->name ?? 'unknown'}}</span>
     </p>
 
     <div class="single-blog-post-ContentImage" data-aos="fade-left">
@@ -16,7 +16,7 @@
     </div>
 
     <div class="about-text">
-      <p>
+      <p style="color: white;">
       {{ $post->body }}
       </p>
     </div>

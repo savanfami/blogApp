@@ -2,7 +2,7 @@
 
 @section('main')
 <div class="container col-md-6" style="margin-top: 100px;">
-    <h2>Create Category</h2>
+    <h2 style="color: white;">Create Category</h2>
 
 @if (Session('status'))
  <p style="background-color: green;color: white;padding: 1rem;">{{ Session('status') }}</p>
@@ -13,7 +13,7 @@
     <form action="{{ route('category.store') }}"  method="POST" >
         @csrf
         <div class="form-group">
-            <label for="name">Name:</label>
+            <label style="color: white;" for="name">Name:</label>
             <input type="text" name="name" class="form-control" value="{{ old('name') }}" >
             @error('title') <span class="text-danger">{{ $message }}</span> @enderror
         </div>  

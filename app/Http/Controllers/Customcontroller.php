@@ -17,10 +17,7 @@ class Customcontroller extends Controller
         return view('welcome',compact('allPosts'));
     }
 
-    public function about()
-    {
-        return view('about');
-    }
+  
 
     /**
      * Show the form for creating a new resource.

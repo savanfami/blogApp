@@ -2,7 +2,7 @@
 
 @section('main')
 
-<div class="container mt-5">
+<div class="container mt-5 ">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -14,9 +14,8 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    
                     @auth
-                    <p>Welcome, {{ Auth::user()->name }}</p>
+                    <p style="color: white; font-size: 20px;">Welcome  {{ Auth::user()->name }}</p>
                     
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
                         @csrf
@@ -25,14 +24,14 @@
                     @endauth
                     
                     @guest
-                    <p>Please Log In to view the Blogs</p>
+                    <p style="color:white">Please Log In to view the Blogs</p>
                     @endguest
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="container mt-5">
+<div class="container mt-5" style="height: 400px;">
     <div class="row justify-content-center">
         <div class="col-md-6 text-center">
             <div class="d-flex flex-column gap-3">

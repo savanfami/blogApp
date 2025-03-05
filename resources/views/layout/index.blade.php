@@ -18,19 +18,18 @@
   <div id="wrapper">
     <div class="sidebar">
       <span class="closeButton">&times;</span>
-      <p class="brand-title"><a href="">Blog World </a></p>
+      <p class="brand-title"><a href=""> </a></p>
       <div class="side-links">
-        <ul>  
-          @auth
-        <li><a class="{{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Dashboard</a></li>
-        <li><a class="{{ request()->routeIs('blog.myblog') ? 'active' : '' }}" href="{{ route('blog.myblog') }}">My Blogs</a></li>
-      @endauth
+        <ul>
           <li><a class="{{ request()->routeIs('home.index') ? 'active' : '' }}"
               href="{{ route('home.index') }}">Home</a></li>
-          <li><a class="{{ request()->routeIs('blog.index') ? 'active' : '' }}"
-              href="{{ route('blog.index') }}">Blog</a></li>
-          <li><a class="{{ request()->routeIs('home.about') ? 'active' : '' }}"
-              href="{{ route('home.about') }}">About</a></li>
+              <li><a class="{{ request()->routeIs('blog.index') ? 'active' : '' }}"
+                  href="{{ route('blog.index') }}">Blog</a></li>
+              @auth
+        <li><a class="{{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Dashboard</a></li>
+        <li><a class="{{ request()->routeIs('blog.myblog') ? 'active' : '' }}" href="{{ route('blog.myblog') }}">My
+          Blogs</a></li>
+      @endauth
           @guest
         <li><a class="{{ request()->routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}">Login</a></li>
         <li><a class="{{ request()->routeIs('register') ? 'active' : '' }}"
@@ -39,7 +38,7 @@
         </ul>
       </div>
     </div>
-    
+
 
     @yield('main')
 
