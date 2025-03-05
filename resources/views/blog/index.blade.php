@@ -13,14 +13,11 @@
     </form>
     </div>
     <div class="categories">
+      <ul>
       @foreach ($allcategory as $cat )
-    <ul>
-      
-     
-      <li><a href="">{{ $cat->name }}</a></li>
-      
-    </ul>
+    <li><a href="{{ route('blog.index', ['category' => $cat->name]) }}">{{ $cat->name }}</a></li>
     @endforeach
+    </ul>
     </div>
     @if (Session('status'))
     <p style="background-color: red;color: white;padding: 1rem;">{{ Session('status') }}</p>

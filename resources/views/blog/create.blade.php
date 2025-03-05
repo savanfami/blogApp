@@ -24,13 +24,15 @@
 
         </div>
 
-        <!-- <div class="form-group">
+        <div class="form-group">
             <label for="category">Select Category:</label>
-            <select name="category" class="form-control" >
-                <option value="">Choose Category</option>
+            <select name="categories_id" class="form-control" >
+                @foreach ($cat as $dd)
+                <option value="{{  $dd->id}}">{{  $dd->name}}</option>
+                @endforeach
                
             </select>
-        </div> -->
+        </div>
 
         <!-- Body -->
         <div class="form-group">

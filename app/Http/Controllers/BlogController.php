@@ -19,16 +19,22 @@ class BlogController extends Controller
     {
         if($request->search){
             $allPost = Post::where('title', 'LIKE', '%' . $request->search . '%')->latest()->paginate(1);
+        }else if($request->category){
+            $allPost=categories::where('name',$request->category)->firstOrFail()->posts()->paginate(2)->withQueryString();
         }else{
-            $allPost = Post::latest()->paginate(1);
+            $allPost = Post::latest()->paginate(4);
         }
+      
+        
         $allcategory=categories::all();
         return view('blog.index', ['allPosts' => $allPost,'allcategory'=>$allcategory]);
     }
 
+
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->with('user')->firstOrFail();
+        $Category=$post->category();
         return view('blog.single', compact('post'));
     }
     /**
@@ -36,7 +42,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+      $cat= categories::all();
+        return view('blog.create',compact('cat'));
     }
 
     public function __construct()
@@ -103,11 +110,18 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required|string',
             'image' => 'required|image',
-            'body' => 'required'
+            'body' => 'required',
+            'categories_id'=>'required'
         ]);
 
         $title = $request->input('title');
-        $latestPostId = (Post::latest()->first()->id ?? 0) + 1;
+        $categories_id=$request->input('categories_id');
+        if(Post::latest()==null){
+            $latestPostId=1;
+        }else{
+            $latestPostId = (Post::latest()->first()->id ?? 0) + 1;
+
+        }
         $body = $request->input('body');
         $slug = str::slug($title, '-') . '-' . $latestPostId;
         $userId = Auth::user()->id;
@@ -115,6 +129,7 @@ class BlogController extends Controller
         $post = new Post;
         $post->title = $title;
         $post->slug = $slug;
+        $post->categories_id=$categories_id;
         $post->user_id = $userId;
         $post->image_path = $imagePath;
         $post->body = $body;

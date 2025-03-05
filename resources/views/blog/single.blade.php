@@ -21,22 +21,7 @@
       </p>
     </div>
     </section>
-    <section class="recommended">
-    <p>Related</p>
-    <div class="recommended-cards">
-
-      <a href="">
-      <div class="recommended-card">
-        <img src="images/pic2.jpg" alt="" loading="lazy" />
-        <h4>
-        India KicksOff IPL 16
-        </h4>
-      </div>
-      </a>
-
-
-    </div>
-    </section>
+   
   </main>
 
 @endsection
