@@ -2,12 +2,22 @@
 
 @section('main')
 
+<div class="container mt-5" >
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="d-flex justify-content-center gap-5 flex-wrap">
+                <a class="btn bg-white" href="{{ route('blog.create') }}">Create Post</a>
+                <a class="btn bg-white" href="{{ route('categories.create') }}">Create Category</a>
+                <a class="btn bg-white " href="{{ route('categories.index') }}">List Categories</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container mt-5 ">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                <i class="fa fa-h-square" aria-hidden="true"></i>
+            <div class="card border-2 border-indigo-600">
                 <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -31,15 +41,5 @@
         </div>
     </div>
 </div>
-<div class="container mt-5" style="height: 400px;">
-    <div class="row justify-content-center">
-        <div class="col-md-6 text-center">
-            <div class="d-flex flex-column gap-3">
-                <a class="btn btn-primary" href="{{ route('blog.create') }}">Create Post</a>
-                <a class="btn btn-primary" href="{{ route('categories.create') }}">Create Category</a>
-                <a class="btn btn-primary" href="{{ route('categories.index') }}">List Categories</a>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection

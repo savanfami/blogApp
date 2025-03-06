@@ -40,16 +40,7 @@
                             @enderror
                         </div>
                         
-                        <div class="mb-4">
-                            <div class="form-check">
-                                <input  class="form-check-input" type="checkbox" name="remember" 
-                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                
-                                <label style="color: white;" class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
-                            </div>
-                        </div>
+                       
                         
                         <div class="d-grid gap-2 mb-3">
                             <button type="submit" class="btn  py-2" style="color: black;background-color: white;">

@@ -13,7 +13,7 @@
     <section class="cards-blog latest-blog">
   @foreach ($allPosts as $post)
     <div class="card-blog-content">
-    <img src="{{ asset($post['image_path']) }}" alt="Post Image" />
+    <img class='zoom-effect' src="{{ asset($post['image_path']) }}" alt="Post Image" />
     <p style="color: white;">
     {{ $post->created_at->diffForHumans() }}
     <span style="color: white;">Written by {{ $post->user->name ?? 'Unknown' }}</span>

@@ -20,7 +20,11 @@ Route::get('/test-cloudinary', function () {
 
 Route::controller(Customcontroller::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
+
 }); 
+
+
+
 
 Route::controller(BlogController::class)->group(function () {
     Route::get('/blog', 'index')->name('blog.index');

@@ -3,11 +3,11 @@
 
 @section('main')
 
-  <main class="container " >
+  <main class="container total-blog " >
     <div class="searchbar mt-5">
     <form action="">
-      <input type="text" style="color: white;" placeholder="Search..." name="search" />
-      <button type="submit">
+      <input class='search-ipt' type="text"  placeholder="Search..." name="search" />
+      <button class='search-btn' type="submit">
       search
       </button>
     </form>

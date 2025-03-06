@@ -10,7 +10,7 @@
 }
 
 body {
-  color: #fff;
+
   background: #101010;
 }
 
@@ -187,6 +187,8 @@ footer small {
 .searchbar {
   text-align: center;
   margin: 15px auto;
+  border: white;
+  
 }
 
 .searchbar input {
@@ -208,8 +210,8 @@ footer small {
   list-style: none;
   background-color: #494949;
   margin: 20px 5px;
-  
   border-radius: 15px;
+  
 }
 
 .categories ul {
@@ -223,13 +225,23 @@ footer small {
   display: inline-block;
 }
 
+
+
+.ic{
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+
 .header-title {
   text-align: center;
   margin: 80px 0 40px 0;
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 600;
   color: white;
+  font-family: 'Times New Roman', Times, serif;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  text-decoration: underline;
 }
 
 .cards-blog {
@@ -240,6 +252,18 @@ footer small {
   border: none;
 }
 
+.zoom-effect{
+  transition: transform 0.3s ease-in-out;
+}
+
+.zoom-effect:hover {
+  transform: scale(0.8);
+}
+
+
+.search-btn{
+border-radius: 10px;
+}
 .card-blog-content p {
   margin-bottom: 16px;
   margin-top: 6px;

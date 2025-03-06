@@ -6,12 +6,11 @@
         <p class="alert alert-success">{{ Session('status') }}</p>
     @endif
 
-    <div class="card shadow">
+    <div >
+        <h1 class='text-white'>List Category</h1>
         <div class="card-body">
             <table id="myTable" class="table table-striped table-bordered text-center">
-                <thead class="thead-dark">
-                    
-                </thead>
+               
                 <tbody>
                     @foreach ($allCategory as $cat )
                     
@@ -30,7 +29,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <a href="{{ route('categories.create') }}" class="mt-3 btn btn-primary">Create Category</a>
+            <a href="{{ route('categories.create') }}" class="mt-3 btn bg-white text-black">Create Category</a>
         </div>
     </div>
 </div>
