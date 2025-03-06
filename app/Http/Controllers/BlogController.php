@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\str;
 use App\Models\Post;
 use App\Models\categories;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
 
 
 
@@ -125,7 +127,10 @@ class BlogController extends Controller
         $body = $request->input('body');
         $slug = str::slug($title, '-') . '-' . $latestPostId;
         $userId = Auth::user()->id;
-        $imagePath = 'storage/' . $request->file('image')->store('blog/post/images', 'public');
+        // $imagePath = 'storage/' . $request->file('image')->store('blog/post/images', 'public');
+        // $imagePath = Cloudinary::uploadFile($request->file('image')->getRealPath())->getSecurePath();
+        $imagePath = $this->uploadToUploadcare($request->file('image'));
+        // return dd($imagePath)
         $post = new Post;
         $post->title = $title;
         $post->slug = $slug;
@@ -138,6 +143,39 @@ class BlogController extends Controller
         return redirect()->back()->with('status', 'Post Saved Successfully');
 
     }
+
+
+
+    public function uploadToUploadcare($image)
+    {
+        $apiKey = 'f982f4cfc786204332a2';
+        $uploadUrl = 'https://upload.uploadcare.com/base/';
+        
+        $postData = [
+            'UPLOADCARE_PUB_KEY' => $apiKey,
+            'UPLOADCARE_STORE' => 'auto',
+            'file' => curl_file_create($image->getRealPath(), $image->getMimeType(), $image->getClientOriginalName()),
+        ];
+    
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $uploadUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+        $response = curl_exec($ch);
+        curl_close($ch);
+    
+        $responseData = json_decode($response, true);
+    
+        return isset($responseData['file']) ? 'https://ucarecdn.com/' . $responseData['file'] . '/' : '';
+    }
+    
+    
+    
+    
+      
+
 
 
     public function myblog(){

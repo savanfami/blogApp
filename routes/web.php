@@ -10,6 +10,13 @@ use App\Http\Controllers\Customcontroller;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
+Route::get('/test-cloudinary', function () {
+    $response = Cloudinary::getStatus();
+    return $response;
+});
+
 
 Route::controller(Customcontroller::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
