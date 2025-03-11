@@ -1,26 +1,26 @@
 @extends('layout.index')
 
 @section('main')
-<div class="container col-md-6" style="margin-top: 100px;">
-    <h2 style="color: white;">Create Category</h2>
+<div class="max-w-md mx-auto mt-10 bg-white text-gray-500 p-8 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-6 text-center">Create Category</h2>
 
-@if (Session('status'))
- <p style="background-color: green;color: white;padding: 1rem;">{{ Session('status') }}</p>
-@endif
+    @if (Session('status'))
+        <p class="bg-green-500 text-white p-3 rounded mb-4 text-center">{{ Session('status') }}</p>
+    @endif
 
-<div class="card">
-    <div class="card-body">
-    <form action="{{ route('category.store') }}"  method="POST" >
-        @csrf
-        <div class="form-group">
-            <label style="color: white;" for="name">Name:</label>
-            <input type="text" name="name" class="form-control" value="{{ old('name') }}" >
-            @error('title') <span class="text-danger">{{ $message }}</span> @enderror
-        </div>  
-        <button type="submit" class="btn btn-primary mt-3">Create Category</button>
-    </form>
-    <a href="{{ route('categories.index') }}" class=" mt-3 btn btn-primary" >all Category</a>
+    <div class=" p-6 rounded-lg">
+        <form action="{{ route('category.store') }}" method="POST" class="space-y-4">
+            @csrf
+            <div>
+                <label for="name" class="block text-sm font-medium text-black">Name:</label>
+                <input type="text" name="name" class="w-full mt-1 p-3 border border-gray-700  rounded " value="{{ old('name') }}">
+                @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            </div>
+            
+            <button type="submit" class="w-full bg-blue-600  text-white font-bold py-3 px-6 rounded transition duration-300">Create </button>
+        </form>
+        
+        <a href="{{ route('categories.index') }}" class="block text-center bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded mt-4 transition duration-300">All Categories</a>
     </div>
-</div>
 </div>
 @endsection

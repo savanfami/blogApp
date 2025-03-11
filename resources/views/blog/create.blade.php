@@ -1,51 +1,44 @@
 @extends('layout.index')
 
 @section('main')
-<div class="container" style="margin-top: 100px;">
-    <h2 style="color: white;">Create Blog Post</h2>
+<div class="max-w-2xl mx-auto mt-10  black p-8 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold font-serif mb-6 text-center">Create Blog </h2>
 
-@if (Session('status'))
- <p style="background-color: green;color: white;padding: 1rem;">{{ Session('status') }}</p>
-@endif
+    @if (Session('status'))
+        <p class="bg-green-500 black p-3 rounded mb-4 text-center">{{ Session('status') }}</p>
+    @endif
 
-    <form  method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data" class="space-y-4">
         @csrf
-        <div class="form-group">
-            <label style="color: white;" for="title">Title:</label>
-            <input type="text" name="title" class="form-control" value="{{ old('title') }}" >
-            @error('title') <span class="text-danger">{{ $message }}</span> @enderror
+        
+        <div>
+            <label for="title" class="block text-sm font-medium">Title:</label>
+            <input type="text" name="title" class="w-full mt-1 p-3 border border-gray-700 bg-white rounded focus:ring focus:ring-blue-500 focus:outline-none" value="{{ old('title') }}">
+            @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
- 
-        <div class="form-group">
-            <label style="color: white;" for="image">Upload Image:</label>
-            <input type="file" name="image" class="form-control-file" >
-            @error('image') <span class="text-danger">{{ $message }}</span> @enderror
-
+        <div>
+            <label for="image" class="block text-sm font-medium">Upload Image:</label>
+            <input type="file" name="image" class="w-full mt-1 p-2 border border-gray-700 bg-white rounded focus:ring focus:ring-blue-500 focus:outline-none">
+            @error('image') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
-        <div class="form-group">
-            <label style="color: white;" for="category">Select Category:</label>
-            <select name="categories_id" class="form-control" >
+        <div>
+            <label for="category" class="block text-sm font-medium">Select Category:</label>
+            <select name="categories_id" class="w-full mt-1 p-3 border border-gray-700 bg-white rounded focus:ring focus:ring-blue-500 focus:outline-none">
                 @foreach ($cat as $dd)
-                <option value="{{  $dd->id}}">{{  $dd->name}}</option>
+                    <option value="{{ $dd->id }}">{{ $dd->name }}</option>
                 @endforeach
-               
             </select>
         </div>
 
-        <!-- Body -->
-        <div class="form-group mt-4">
-            <label style="color: white;" for="body">Body:</label>
-            <textarea name="body" class="form-control" rows="5" >{{ old('body') }}</textarea>
-            @error('body') <span class="text-danger">{{ $message }}</span> @enderror
-
+        <div>
+            <label for="body" class="block text-sm font-medium">Body:</label>
+            <textarea name="body" class="w-full mt-1 p-3 border border-gray-700 bg-white rounded focus:ring focus:ring-blue-500 focus:outline-none" rows="5">{{ old('body') }}</textarea>
+            @error('body') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
-  
-        <button type="submit" class="btn btn-primary mt-5">Create Post</button>
+        <button type="submit" class="w-full bg-blue-700 text-white  black font-bold py-3 px-6 rounded transition duration-300">Create</button>
     </form>
 </div>
 @endsection
-
-

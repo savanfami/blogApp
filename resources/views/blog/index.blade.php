@@ -6,18 +6,21 @@
   <main class="container total-blog " >
     <div class="searchbar mt-5">
     <form action="">
-      <input class='search-ipt' type="text"  placeholder="Search..." name="search" />
-      <button class='search-btn' type="submit">
-      search
-      </button>
+    
     </form>
     </div>
     <div class="categories">
-    <ul>
-      @foreach ($allcategory as $cat)
-      <li><a href="{{ route('blog.index', ['category' => $cat->name]) }}">{{ $cat->name }}</a></li>
+    <div class="flex justify-center  items-center">
+  <ul class="flex gap-2">
+    @foreach ($allcategory as $cat)
+      <li>
+        <a class="bg-gray-600 p-2 pb-3 rounded-md text-white" href="{{ route('blog.index', ['category' => $cat->name]) }}">
+          {{ $cat->name }}
+        </a>
+      </li>
     @endforeach
-    </ul>
+  </ul>
+</div>
     </div>
     @if (Session('status'))
     <p style="background-color: red;color: white;padding: 1rem;">{{ Session('status') }}</p>
@@ -26,34 +29,34 @@
     @if($allPosts->isEmpty())
     <p style="color: white;">No blog posts available.</p>
   @else
-  @foreach ($allPosts as $post)
-    <div class="card-blog-content">
-    <img src="{{ asset($post->image_path) }}" alt="Post Image" />
-    <p>
-    {{ $post->created_at->diffForHumans() }}
-    <span >Written by {{ $post->user->name ?? 'Unknown' }}</span>
-    </p>
+  <div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
+     
+     @foreach ($allPosts as $post)
+     <div class="flex flex-col mt-10 overflow-hidden rounded-lg border bg-white">
+       <a href="{{ route('blog.show', ['slug' => $post->slug]) }}" class="group relative block h-48 overflow-hidden  md:h-64">
+         <img src="{{ asset($post['image_path']) }}" loading="lazy" alt="Photo by Minh Pham" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+       </a>
 
-    <!-- Wrap title and buttons in a flex container -->
-    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-    <h4 style="margin: 0;">
-    <a class="a-class" href="{{ route('blog.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
-    </h4>
-    @auth
-    @if (auth()->check() && auth()->user()->id === $post->user->id)
-    <div style="display: flex; gap: 10px;">
-    <a href="{{route('blog.edit', $post)}}" class="btn btn-primary">Edit</a>
-    <form action="{{ route('blog.delete', $post) }}" method="POST">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="btn btn-danger">Delete</button>
-    </form>
-    </div>
-  @endif
-  @endauth
-    </div>
-    </div>
-  @endforeach
+       <div class="flex flex-1 flex-col p-4 sm:p-6">
+         <h2 class="mb-2 text-lg font-semibold text-gray-800">
+           <a  href="{{ route('blog.show', ['slug' => $post->slug]) }}" class="transition duration-100 hover:text-indigo-500 active:text-indigo-600">{{ $post->title }}</a>
+         </h2>
+
+
+         <div class="mt-auto flex items-end justify-between">
+           <div class="flex items-center gap-2">
+
+             <div>
+               <span class="block text-indigo-500"{{ $post->user->name ?? 'Unknown' }}</span>
+               <span class="block text-sm text-gray-400"> {{ $post->created_at->diffForHumans() }}</span>
+             </div>
+           </div>
+
+         </div>
+       </div>
+     </div>
+     @endforeach
+   </div>
 @endif
     </section>
 
@@ -63,3 +66,9 @@
   </div>
 
 @endsection
+
+
+
+
+
+
