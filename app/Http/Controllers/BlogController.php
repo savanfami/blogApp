@@ -92,7 +92,7 @@ class BlogController extends Controller
         $body = $request->input('body');
         $slug = str::slug($title, '-') . '-' . $PostId;
         $userId = Auth::user()->id;
-        $imagePath = 'storage/' . $request->file('image')->store('blog/post/images', 'public');
+        $imagePath = $this->uploadToUploadcare($request->file('image'));
         $post->title = $title;
         $post->slug = $slug;
         $post->image_path = $imagePath;
@@ -130,6 +130,7 @@ class BlogController extends Controller
         // $imagePath = 'storage/' . $request->file('image')->store('blog/post/images', 'public');
         // $imagePath = Cloudinary::uploadFile($request->file('image')->getRealPath())->getSecurePath();
         $imagePath = $this->uploadToUploadcare($request->file('image'));
+        // dd($imagePath);
         // return dd($imagePath)
         $post = new Post;
         $post->title = $title;
@@ -170,7 +171,6 @@ class BlogController extends Controller
     
         return isset($responseData['file']) ? 'https://ucarecdn.com/' . $responseData['file'] . '/' : '';
     }
-    
     
     
     
